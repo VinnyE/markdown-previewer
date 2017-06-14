@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import * as marked from 'marked'
+import renderHTML from 'react-render-html';
 import './App.css';
 
 const TextArea = props => {
  return (
-   <div>
-     <textarea cols="30" rows="10" onChange={props.onChangeHandler} ></textarea>
+   <div className="text-input-container">
+     <textarea onChange={props.onChangeHandler} ></textarea>
    </div>
  )
 }
@@ -22,7 +23,6 @@ class App extends Component {
   }
 
   onChangeHandler (e) {
-    console.log(e.target.value)
     this.setState({
       inputText: marked(e.target.value)
     })
@@ -32,17 +32,12 @@ class App extends Component {
     return (
       <div className="App">
         <TextArea onChangeHandler={this.onChangeHandler} />
-        <div>
-          {this.state.inputText}
+        <div className="text-output-container">
+          {renderHTML(this.state.inputText)}
         </div>
       </div>
     );
   }
 }
 
-export default App;
-
-
-// 1. User types something into the text area.
-// 2. On change gather text in text area 
-// 3. Display text in another div.
+export default App
