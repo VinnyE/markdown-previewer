@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as marked from 'marked'
+import * as marked from 'marked';
 import renderHTML from 'react-render-html';
 import './App.css';
 
@@ -9,23 +9,23 @@ const TextArea = props => {
      <textarea onChange={props.onChangeHandler} ></textarea>
    </div>
  )
-}
+};
 
 class App extends Component {
   constructor () {
-    super()
+    super();
 
     this.state = {
       inputText: ''
-    }
+    };
 
-    this.onChangeHandler = this.onChangeHandler.bind(this)
+    this.onChangeHandler = this.onChangeHandler.bind(this);
   }
 
   onChangeHandler (e) {
     this.setState({
       inputText: marked(e.target.value)
-    })
+    });
   }
 
   render() {
@@ -40,4 +40,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default App;
